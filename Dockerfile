@@ -1,15 +1,10 @@
 # Basis-Image mit Python und CUDA-Unterstützung
-FROM nvidia/cuda:11.8.0-base-ubuntu22.04
+FROM pytorch/pytorch:2.5.1-cuda11.8-cudnn9-runtime
 
 # Umgebungsvariablen setzen
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 python3-pip python3-dev git wget curl libgl1 libglib2.0-0 && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Python installieren
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN apt-get update && apt-get install -y --no-install-recommends 
 
 # Arbeitsverzeichnis setzen
 WORKDIR /app
