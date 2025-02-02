@@ -36,7 +36,7 @@ def get_pending_jobs():
         collection = db[collection_name]
 
         # Find all entries with the status 'prompt_created' and sort by creation date
-        jobs = collection.find({"status": "prompt_created"}).sort("uploadDate", 1)  # 1 for ascending order
+        jobs = collection.find({"status": "prompted"}).sort("uploadDate", 1)  # 1 for ascending order
         # Add the found jobs to the pending jobs list
         for job in jobs:
             pending_jobs.append({
